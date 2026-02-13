@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-          {/* Column 1: The Customer Brand */}
+          {/* The Customer Brand */}
           <div className="space-y-4">
             <h2 className="text-white text-xl font-bold italic tracking-tighter">
               Amna <span className="opacity-40">Afzal</span>
@@ -21,7 +21,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Column 2: Navigation */}
+          {/* Navigation */}
           <div className="flex flex-col gap-3">
             <h4 className="text-zinc-600 text-[9px] uppercase tracking-[0.3em] font-bold mb-2">Index</h4>
             <a href="#home" className="text-zinc-400 hover:text-[#088395] text-xs transition-colors w-fit">Home</a>
@@ -29,7 +29,7 @@ const Footer = () => {
             <a href="#about" className="text-zinc-400 hover:text-[#088395] text-xs transition-colors w-fit">About</a>
           </div>
 
-          {/* Column 3: Social & Contact */}
+          {/* Social & Contact */}
           <div className="flex flex-col gap-3">
             <h4 className="text-zinc-600 text-[9px] uppercase tracking-[0.3em] font-bold mb-2">Social</h4>
             <a href="#" className="group text-zinc-400 hover:text-white text-xs transition-colors flex items-center gap-1">
@@ -48,18 +48,17 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-end pt-8 border-t border-white/5 gap-6">
           <div className="space-y-1">
             <p className="text-zinc-600 text-[9px] uppercase tracking-[0.2em]">
-              © 2026 Studio - Amna Afzal
+             
             </p>
           </div>
 
           <button 
             onClick={scrollToTop}
-            className="text-zinc-500 hover:text-white text-[9px] uppercase tracking-[0.3em] transition-colors flex items-center gap-2"
+            className="text-zinc-500 hover:text-white text-[9px] tracking-[0.3em] transition-colors flex items-center gap-2"
           >
             Scroll to Top <span className="text-lg">↑</span>
           </button>
         </div>
-
 
         <div className="mt-16 text-center border-t border-white/[0.02] pt-8">
            <p className="text-zinc-600 text-[9px] tracking-[0.2em] font-normal">

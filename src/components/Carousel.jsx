@@ -35,7 +35,7 @@ const AboutSection = () => {
       
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center">
         
-        {/* LEFT SIDE: THE CAROUSEL */}
+        {/* Left Side*/}
         <div className="relative flex flex-col items-center lg:items-start">
           <div className="relative w-full max-w-[340px] z-10">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl group bg-black">
@@ -94,7 +94,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* RIGHT SIDE: ABOUT ME CONTENT */}
+        {/* Right Side */}
         <div className="text-left space-y-6 relative z-10">
           <div>
             <h2 className="text-[#09637E] font-mono text-[10px] tracking-[0.4em] uppercase mb-3">About Me</h2>

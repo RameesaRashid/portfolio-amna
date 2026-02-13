@@ -25,7 +25,7 @@ const AboutSection = () => {
     <section id="about" className="bg-slate-950 py-24 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
-        {/* --- LEFT SIDE: COMPACT CAROUSEL --- */}
+        {/*Left Side */}
         <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
           {/* Decorative Glow behind Carousel */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#3ba18e]/10 rounded-full blur-[100px] pointer-events-none" />
@@ -59,7 +59,7 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* --- RIGHT SIDE: ABOUT ME CONTENT --- */}
+        {/* Right Side */}
         <div className="order-1 lg:order-2 space-y-8">
           <div>
             <h2 className="text-[#3ba18e] font-mono text-[10px] tracking-[0.4em] uppercase mb-2">About Me</h2>
@@ -77,7 +77,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          {/* Experience / Stats Mini Grid */}
+          {/* Experience Grid */}
           <div className="grid grid-cols-2 gap-8 pt-4 border-t border-white/5">
             <div>
               <p className="text-white text-2xl font-bold tracking-tighter">Graphic Design</p>

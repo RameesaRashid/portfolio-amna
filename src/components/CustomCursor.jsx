@@ -34,7 +34,7 @@ const CustomCursor = () => {
 
   return (
     <div className="hidden md:block">
-      {/* The Main Dot */}
+      {/* Dot */}
       <div 
         className="fixed top-0 left-0 w-2 h-2 bg-[#b15579] rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
         style={{ 
@@ -42,11 +42,11 @@ const CustomCursor = () => {
         }}
       />
 
-      {/* The Expanding Ring */}
+      {/* Expanding Ring */}
       <div 
         className={`fixed top-0 left-0 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 border border-[#b15579]/50 transition-all duration-300 ease-out ${
-          isHovering ? 'w-12 h-12 bg-[#3ba18e]/10 border-[#b4ebfc]' : 'w-8 h-8 bg-transparent'
-        } ${isClicking ? 'scale-75' : 'scale-100'}`}
+          isHovering ? 'w-12 h-12 bg-[#3ba18e]/10 border-[#b4ebfc]' : 'w-9 h-9 bg-transparent'
+        } ${isClicking ? 'scale-85' : 'scale-100'}`}
         style={{ 
           transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
         }}
