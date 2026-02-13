@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Download } from 'lucide-react'; // Make sure to: npm install lucide-react
+import { Download } from 'lucide-react'; 
 
-// --- Sub-component: Infinite Skills Marquee ---
 const SkillMarquee = () => {
   const skills = [
     "Photoshop", "Illustrator", "Figma", "Android Studio", 
@@ -28,7 +27,7 @@ const SkillMarquee = () => {
   );
 };
 
-// --- Main Hero Component ---
+
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +37,7 @@ const Hero = () => {
   }, []);
 
   const handleMouseMove = (e) => {
-    // Parallax only on Desktop to prevent mobile performance issues
+    
     if (window.innerWidth > 768) {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -51,7 +50,7 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       className="relative min-h-screen flex items-center justify-center px-4 md:px-6 pt-16 md:pt-20 overflow-hidden bg-slate-950"
     >
-      {/* 1. DYNAMIC BACKGROUND LAYER (Mouse Parallax) */}
+      {/* DYNAMIC BACKGROUND LAYER (Mouse Parallax) */}
       <div 
         className="absolute inset-0 pointer-events-none transition-transform duration-500 ease-out opacity-50 md:opacity-100"
         style={{ transform: `translate(${mousePos.x}px, ${mousePos.y}px)` }}
@@ -74,7 +73,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* 2. INFINITE SKILLS MARQUEE */}
+        {/* INFINITE SKILLS MARQUEE */}
         <SkillMarquee />
 
         {/* Tagline */}
@@ -89,12 +88,12 @@ const Hero = () => {
           Specialized in creating seamless digital experiences.
         </p>
 
-        {/* 3. CTA BUTTONS GROUP */}
+        {/* CTA BUTTONS GROUP */}
         <div className="flex flex-col sm:flex-row gap-4 md:gap-4 justify-center items-center">
           {/* Main CTA */}
           <a 
             href="#work" 
-            className="w-full sm:w-auto group relative bg-white text-slate-950 px-6 py-3 md:py-4 rounded-full font-bold overflow-hidden transition-all hover:bg-[#3ba18e] hover:text-white text-[10px] md:text-xs text-center"
+            className="w-full sm:w-auto group relative bg-white text-slate-950 px-6 py-3 md:py-4 rounded-full font-bold overflow-hidden transition-all hover:bg-[#1b6e9fda] hover:text-white text-[10px] md:text-xs text-center"
           >
             View My Work
           </a>

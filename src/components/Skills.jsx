@@ -5,25 +5,25 @@ export const SkillMarquee = () => {
   ];
 
   return (
-    <div className="w-full py-4 overflow-hidden mb-8 select-none">
+    <div className="w-full py-6 overflow-hidden mb-8 select-none relative group">
+     
       <div className="relative flex max-w-[100vw] overflow-hidden">
-        {/* The Scrolling Track */}
-        <div className="flex w-max animate-scroll">
-          {/* We duplicate the array to ensure a seamless infinite loop */}
-          {[...skills, ...skills].map((skill, index) => (
+        
+        <div className="flex w-max animate-scroll group-hover:[animation-play-state:paused]">
+         
+          {[...skills, ...skills, ...skills].map((skill, index) => (
             <div key={index} className="flex items-center">
-              <span className="text-zinc-500 mx-4 text-xs uppercase tracking-[0.4em] font-light">
+              <span className="text-zinc-500 mx-8 text-[10px] md:text-xs uppercase tracking-[0.5em] font-light hover:text-[#266493] transition-colors duration-300">
                 {skill}
               </span>
-              {/* Decorative separator dot */}
-              <span className="w-1 h-1 bg-[#3ba18e] rounded-full opacity-50"></span>
+              <span className="w-1 h-1 bg-[#256cab] rounded-full opacity-30" />
             </div>
           ))}
         </div>
 
-        {/* Gradient Fades for the edges to make it look "pro" */}
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10"></div>
-        <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10"></div>
+
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-950 via-slate-950/50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-950 via-slate-950/50 to-transparent z-10 pointer-events-none" />
       </div>
     </div>
   );

@@ -3,23 +3,28 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const form = useRef();
-  const [status, setStatus] = useState("idle"); // idle, sending, success, error
+  const [status, setStatus] = useState("idle");
 
   const sendEmail = (e) => {
     e.preventDefault();
+    
+    // Safety check
+    if (status === "sending") return;
+
     setStatus("sending");
 
-    // Replace these strings with your actual EmailJS IDs
-    const SERVICE_ID = "YOUR_SERVICE_ID";
-    const TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-    const PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+    // Using Vite Environment Variables for security
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
-      .then((result) => {
+      .then(() => {
           setStatus("success");
-          form.current.reset(); // Clears the form
+          form.current.reset(); 
           setTimeout(() => setStatus("idle"), 5000);
       }, (error) => {
+          console.error("Email Error:", error);
           setStatus("error");
           setTimeout(() => setStatus("idle"), 5000);
       });
@@ -28,7 +33,6 @@ const Contact = () => {
   return (
     <section id="contact" className="bg-slate-950 py-22 px-6 relative border-t border-white/10">
       <div className="max-w-3xl mx-auto text-center">
-        
         <h2 className="text-[#088395] font-mono text-[10px] tracking-[0.4em] uppercase mb-4">
           Get in Touch
         </h2>
@@ -41,39 +45,46 @@ const Contact = () => {
           I usually respond within 24 hours.
         </p>
 
-        {/* Form with Ref for EmailJS */}
         <form ref={form} onSubmit={sendEmail} className="space-y-12 text-left">
           <div className="grid md:grid-cols-2 gap-12">
             <div className="relative group">
-              <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#3ba18e] transition-colors">Name</label>
+              <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#088395] transition-colors">
+                Name
+              </label>
               <input 
-                name="user_name" // Match these names to your EmailJS Template {{user_name}}
+                name="user_name" 
                 type="text" 
                 required
-                className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#3ba18e] transition-all px-0"
+                autoComplete="name"
+                className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#088395] transition-all px-0"
                 placeholder="Full Name"
               />
             </div>
 
             <div className="relative group">
-              <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#3ba18e] transition-colors">Email</label>
+              <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#088395] transition-colors">
+                Email
+              </label>
               <input 
-                name="user_email" // Match to {{user_email}}
+                name="user_email" 
                 type="email" 
                 required
-                className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#3ba18e] transition-all px-0"
+                autoComplete="email"
+                className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#088395] transition-all px-0"
                 placeholder="email@example.com"
               />
             </div>
           </div>
 
           <div className="relative group">
-            <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#3ba18e] transition-colors">Project Brief</label>
+            <label className="block text-zinc-500 text-[10px] uppercase tracking-widest mb-2 group-focus-within:text-[#088395] transition-colors">
+              Project Brief
+            </label>
             <textarea 
-              name="message" // Match to {{message}}
+              name="message" 
               rows="3"
               required
-              className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#3ba18e] transition-all px-0 resize-none"
+              className="w-full bg-transparent border-b border-white/10 py-3 text-white outline-none focus:border-[#088395] transition-all px-0 resize-none"
               placeholder="What are you looking to create?"
             />
           </div>
@@ -82,13 +93,13 @@ const Contact = () => {
             <button 
               type="submit"
               disabled={status === "sending" || status === "success"}
-              className={`group relative px-6 py-3 font-bold rounded-full overflow-hidden transition-all duration-500 ${
+              className={`group relative px-8 py-4 font-bold rounded-full overflow-hidden transition-all duration-500 disabled:opacity-70 disabled:cursor-not-allowed ${
                 status === "success" 
-                ? "bg-[#3ba18e] text-white" 
-                : "bg-white text-slate-950 hover:bg-[#3ba18e] hover:text-white"
+                ? "bg-[#088395] text-white" 
+                : "bg-white text-slate-950 hover:bg-[#088395] hover:text-white"
               }`}
             >
-              <span className="relative z-10 uppercase tracking-widest text-[10px]">
+              <span className="relative z-10 uppercase tracking-widest text-[11px]">
                 {status === "idle" && "Send Message"}
                 {status === "sending" && "Sending..."}
                 {status === "success" && "Message Sent!"}
@@ -97,7 +108,6 @@ const Contact = () => {
             </button>
           </div>
         </form>
-
       </div>
     </section>
   );
