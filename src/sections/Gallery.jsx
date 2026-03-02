@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react'; // Make sure to: npm install lucide-react
+import React, { useState } from 'react';
+import { X, Plus } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import img1 from '../assets/01.jpeg';
 import img2 from '../assets/02.jpeg';
 import img3 from '../assets/03.jpeg';
@@ -20,97 +21,138 @@ const projects = [
 
 const Gallery = () => {
   const [selectedImg, setSelectedImg] = useState(null);
-
-  useEffect(() => {
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
-        }
-      });
-    }, observerOptions);
-
-    const items = document.querySelectorAll('.reveal-item');
-    items.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <section id="work" className="bg-slate-950 px-6 py-20 relative border-b border-white/10 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
+        
+        
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
             <h2 className="text-[#088395] font-mono text-[10px] tracking-[0.4em] uppercase mb-1">Portfolio</h2>
-            <h3 className="text-white text-3xl md:text-4xl font-black tracking-tighter italic">Selected Works</h3>
+            <h3 className="text-white text-3xl md:text-4xl font-black tracking-tighter italic uppercase">
+              {isExpanded ? "Selected Works" : "Design Collections"}
+            </h3>
           </div>
-          <p className="text-zinc-500 text-xs uppercase tracking-widest italic">
-            Click to expand
-          </p>
+          <div className="flex items-center gap-4">
+            {isExpanded && (
+              <button 
+                onClick={() => setIsExpanded(false)}
+                className="text-zinc-500 text-[10px] uppercase tracking-widest border border-white/10 px-4 py-2 rounded-full hover:bg-white/5 transition-all italic"
+              >
+                Back to Stack
+              </button>
+            )}
+            <p className="text-zinc-500 text-[10px] uppercase tracking-widest italic">
+              {isExpanded ? "Click to zoom" : "Click + to expand"}
+            </p>
+          </div>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          {projects.map((project, index) => {
-            const isWide = index === 2 || index === 5; 
-            const gridSpan = isWide ? 'md:col-span-6' : 'md:col-span-4';
 
-            return (
-              <div 
-                key={project.id}
-                onClick={() => setSelectedImg(project.img)}
-                style={{ transitionDelay: `${index * 50}ms` }}
-                className={`reveal-item opacity-0 translate-y-10 transition-all duration-700 ease-out 
-                  relative group overflow-hidden rounded-[1.5rem] bg-zinc-900 border border-white/5 
-                  ${gridSpan} h-[300px] md:h-[350px] cursor-zoom-in`}
+        <div className="relative min-h-[450px] flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            {!isExpanded ? (
+              
+              <motion.div 
+                key="stack"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.1 }}
+                className="relative w-[280px] h-[350px] md:w-[320px] md:h-[400px]"
               >
-                {/* Visual Overlays */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                
-                <div className="absolute bottom-0 inset-x-0 p-5 z-30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex justify-between items-center text-white">
-                    <p className="font-bold text-sm">{project.title}</p>
-                    <span className="text-[#3ba18e] text-[9px] uppercase tracking-widest">{project.category}</span>
-                  </div>
-                </div>
-                
-                <img 
-                  src={project.img} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-              </div>
-            );
-          })}
+                {projects.slice(0, 4).map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    style={{ zIndex: 10 - index }}
+                    animate={{ 
+                      x: index * 12, 
+                      y: index * -8,
+                      rotate: index * 3,
+                    }}
+                    className="absolute inset-0 rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-zinc-900"
+                  >
+                    <img 
+                      src={project.img} 
+                      className="w-full h-full object-cover opacity-80" 
+                      alt="collection stack" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+                  </motion.div>
+                ))}
+
+
+                <motion.button
+                  onClick={() => setIsExpanded(true)}
+                  whileHover={{ scale: 1.1, backgroundColor: "#fff" }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute -right-12 top-1/2 -translate-y-1/2 z-50 bg-white/90 text-slate-950 p-5 rounded-full shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center justify-center"
+                >
+                  <Plus size={32} strokeWidth={3} />
+                </motion.button>
+              </motion.div>
+            ) : (
+              
+              <motion.div 
+                key="grid"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+              >
+                {projects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    onClick={() => setSelectedImg(project.img)}
+                    className="relative group h-[300px] rounded-[1.8rem] overflow-hidden bg-zinc-900 border border-white/5 cursor-zoom-in"
+                  >
+                    <img 
+                      src={project.img} 
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
+                      alt={project.title} 
+                    />
+                    
+                    <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 inset-x-0 p-5 z-30 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className="bg-black/60 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex justify-between items-center text-white">
+                        <p className="font-bold text-sm">{project.title}</p>
+                        <span className="text-[#088395] text-[9px] uppercase tracking-widest">{project.category}</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* --- LIGHTBOX MODAL --- */}
-      {selectedImg && (
-        <div 
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4 md:p-10"
-          onClick={() => setSelectedImg(null)}
-        >
-          {/* Close Button */}
-          <button 
-            className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
+
+      <AnimatePresence>
+        {selectedImg && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-6"
             onClick={() => setSelectedImg(null)}
           >
-            <X size={32} />
-          </button>
-
-          {/* Full Image */}
-          <img 
-            src={selectedImg} 
-            alt="Full view" 
-            className="max-w-full max-h-full rounded-lg shadow-2xl animate-in zoom-in-95 duration-300"
-            onClick={(e) => e.stopPropagation()} // Prevents closing when clicking the image itself
-          />
-        </div>
-      )}
+            <button className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors">
+              <X size={40} />
+            </button>
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              src={selectedImg} 
+              className="max-w-full max-h-[90vh] rounded-2xl shadow-2xl border border-white/10" 
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
