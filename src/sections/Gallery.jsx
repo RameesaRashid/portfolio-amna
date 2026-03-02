@@ -32,7 +32,7 @@ const Gallery = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div>
-            <h2 className="text-[#088395] font-mono text-[10px] tracking-[0.4em] uppercase mb-2">
+            <h2 className="text-[#09637E] font-mono text-[10px] tracking-[0.4em] uppercase mb-2">
               Portfolio
             </h2>
             <h3 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tighter italic uppercase">

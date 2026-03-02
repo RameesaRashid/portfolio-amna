@@ -3,7 +3,7 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-slate-950/50 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
         <a href="#home" className="text-white font-bold text-xl tracking-tighter">
-          PORTFOLIO <span className="text-blue-500">.</span>
+          PORTFOLIO <span className="text-[#09637E]">.</span>
         </a>
         
         <ul className="hidden md:flex gap-10 text-sm font-medium uppercase tracking-widest">
