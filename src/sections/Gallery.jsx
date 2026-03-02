@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { X, Plus } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import img1 from '../assets/01.jpeg';
-import img2 from '../assets/02.jpeg';
-import img3 from '../assets/03.jpeg';
-import img4 from '../assets/04.jpeg';
-import img5 from '../assets/05.jpeg';
-import img6 from '../assets/06.jpeg';
-import img7 from '../assets/07.jpeg';
+import React, { useState } from "react";
+import { X, Plus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import img1 from "../assets/01.jpeg";
+import img2 from "../assets/02.jpeg";
+import img3 from "../assets/03.jpeg";
+import img4 from "../assets/04.jpeg";
+import img5 from "../assets/05.jpeg";
+import img6 from "../assets/06.jpeg";
+import img7 from "../assets/07.jpeg";
 
 const projects = [
   { id: 1, title: "Editorial Layout", category: "Print", img: img1 },
@@ -29,7 +29,6 @@ const Gallery = () => {
       className="bg-slate-950 px-4 sm:px-6 md:px-10 lg:px-16 py-16 md:py-24 relative border-b border-white/10 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div>
@@ -58,10 +57,8 @@ const Gallery = () => {
 
         {/* Content */}
         <div className="relative min-h-[400px] flex items-center justify-center">
-
           <AnimatePresence mode="wait">
             {!isExpanded ? (
-
               /* STACK VIEW */
               <motion.div
                 key="stack"
@@ -95,14 +92,27 @@ const Gallery = () => {
                   onClick={() => setIsExpanded(true)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  className="absolute -bottom-14 sm:-right-12 sm:top-1/2 sm:-translate-y-1/2 left-1/2 -translate-x-1/2 sm:translate-x-0 bg-white text-slate-950 p-4 sm:p-5 rounded-full shadow-xl z-50"
+                  className="
+    absolute 
+    -right-10 sm:-right-12 
+    top-1/2 -translate-y-1/2 
+    bg-white text-slate-950 
+    p-3 sm:p-4 md:p-5 
+    rounded-full 
+    shadow-[0_0_25px_rgba(255,255,255,0.2)] 
+    z-50
+  "
                 >
-                  <Plus size={28} strokeWidth={3} />
+                  <Plus size={24} className="sm:hidden" strokeWidth={3} />
+                  <Plus
+                    size={28}
+                    className="hidden sm:block md:hidden"
+                    strokeWidth={3}
+                  />
+                  <Plus size={32} className="hidden md:block" strokeWidth={3} />
                 </motion.button>
               </motion.div>
-
             ) : (
-
               /* GRID VIEW */
               <motion.div
                 key="grid"
