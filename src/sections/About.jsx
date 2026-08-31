@@ -85,7 +85,7 @@ const AboutSection = () => {
             </div>
             <div>
               <p className="text-white text-2xl font-bold tracking-tighter">Android Dev</p>
-              <p className="text-[#3ba18e] text-[10px] uppercase tracking-widest mt-1">Kotlin • Java • Flutter</p>
+              <p className="text-[#3ba18e] text-[10px] uppercase tracking-widest mt-1">HTML5 • JavaScript • TypeScript</p>
             </div>
           </div>
 

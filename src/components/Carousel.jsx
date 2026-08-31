@@ -121,7 +121,7 @@ const AboutSection = () => {
             </div>
             <div>
               <p className="text-white font-bold text-xl">Stack</p>
-              <p className="text-zinc-500 text-xs uppercase tracking-widest mt-1">Java - XML - Firebase - Flutter</p>
+              <p className="text-zinc-500 text-xs uppercase tracking-widest mt-1">JavaScript - HTML5 - TypeScript - NodeJs</p>
             </div>
           </div>
 

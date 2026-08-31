@@ -3,8 +3,8 @@ import { Download } from 'lucide-react';
 
 const SkillMarquee = () => {
   const skills = [
-    "Photoshop", "Illustrator", "Figma", "Android Studio", 
-    "Kotlin", "Flutter", "Java", "UI/UX Design"
+    "Photoshop", "Illustrator", "Figma", "Visual Studio", 
+    "JavaScript", "HTML5", "TypeScript", "UI/UX Design"
   ];
 
   return (
