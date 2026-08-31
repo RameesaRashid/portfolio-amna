@@ -14,7 +14,7 @@ const Footer = () => {
           {/* The Customer Brand */}
           <div className="space-y-4">
             <h2 className="text-white text-xl font-bold italic tracking-tighter">
-              Amna <span className="opacity-40">Afzal</span>
+              Rameesa <span className="opacity-40">Rashid</span>
             </h2>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-[220px]">
               Visual identities and native digital experiences tailored for the modern era.

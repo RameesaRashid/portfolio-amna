@@ -106,7 +106,7 @@ const AboutSection = () => {
 
           <div className="space-y-6 text-zinc-400 text-sm leading-relaxed max-w-xl">
             <p>
-              I am <span className="text-white font-medium">Amna Afzal</span>, a multi-disciplinary creator specialized in high-end brand identities and Android development. 
+              I am <span className="text-white font-medium">Rameesa Rashid</span>, a multi-disciplinary creator specialized in high-end brand identities and Android development. 
             </p>
             <p>
               By combining the precision of an <span className="text-[#088395] italic">Android Developer</span> with the soul of a <span className="text-[#088395] italic">Graphic Designer</span>, I build digital experiences that are as functional as they are beautiful.

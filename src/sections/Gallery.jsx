@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { X, Plus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import img1 from "../assets/01.jpeg";
-import img2 from "../assets/02.jpeg";
-import img3 from "../assets/03.jpeg";
-import img4 from "../assets/04.jpeg";
-import img5 from "../assets/05.jpeg";
-import img6 from "../assets/06.jpeg";
-import img7 from "../assets/07.jpeg";
+import { motion, AnimatePresence } from "framer-motion"; // Fixed: Added motion import
+
+// Ensure these exact filenames exist in your src/assets directory
+import img1 from "../assets/01111111.jpeg";
+import img2 from "../assets/0222222.jpeg";  // Fixed: 6 twos
+import img3 from "../assets/03333333.jpeg"; // Fixed: 7 threes
+import img4 from "../assets/0444444.jpeg";
+import img5 from "../assets/0555555.jpeg";
+import img6 from "../assets/0666666.jpeg";
+import img7 from "../assets/0777.png";
+import img8 from "../assets/0888.png";
 
 const projects = [
   { id: 1, title: "Editorial Layout", category: "Print", img: img1 },
@@ -17,6 +20,7 @@ const projects = [
   { id: 5, title: "Motion Graphics", category: "Digital", img: img5 },
   { id: 6, title: "Web Design", category: "UI/UX", img: img6 },
   { id: 7, title: "Brand Guidelines", category: "Branding", img: img7 },
+  { id: 8, title: "Illustration", category: "Digital", img: img8 },
 ];
 
 const Gallery = () => {
@@ -93,15 +97,15 @@ const Gallery = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="
-    absolute 
-    -right-10 sm:-right-12 
-    top-1/2 -translate-y-1/2 
-    bg-white text-slate-950 
-    p-3 sm:p-4 md:p-5 
-    rounded-full 
-    shadow-[0_0_25px_rgba(255,255,255,0.2)] 
-    z-50
-  "
+                    absolute 
+                    -right-10 sm:-right-12 
+                    top-1/2 -translate-y-1/2 
+                    bg-white text-slate-950 
+                    p-3 sm:p-4 md:p-5 
+                    rounded-full 
+                    shadow-[0_0_25px_rgba(255,255,255,0.2)] 
+                    z-50
+                  "
                 >
                   <Plus size={24} className="sm:hidden" strokeWidth={3} />
                   <Plus

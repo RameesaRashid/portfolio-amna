@@ -64,7 +64,7 @@ const Hero = () => {
         {/* Name & Title Section */}
         <div className="relative mb-6 md:mb-8">
           <h1 className="text-2xl md:text-4xl font-black text-[#09637E] tracking-tighter mb-2 md:mb-4 drop-shadow-[0_0_15px_rgba(59,161,142,0.3)]">
-            Amna Afzal
+            Rameesa Rashid
           </h1>
           <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-sm md:text-xl font-medium text-white tracking-tight">
             <span>Graphic Designer</span>
