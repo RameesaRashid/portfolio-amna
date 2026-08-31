@@ -69,7 +69,7 @@ const Hero = () => {
           <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-sm md:text-xl font-medium text-white tracking-tight">
             <span>Graphic Designer</span>
             <span className="hidden md:block h-[1px] w-8 bg-zinc-700"></span>
-            <span className="text-zinc-500 italic font-light">Android Developer</span>
+            <span className="text-zinc-500 italic font-light"></span>
           </div>
         </div>
 

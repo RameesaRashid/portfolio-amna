@@ -70,7 +70,7 @@ const AboutSection = () => {
 
           <div className="space-y-6 text-zinc-400 text-lg leading-relaxed">
             <p>
-              I am <span className="text-white font-medium">Rameesa Rashid</span>, a hybrid creator based in the digital realm. I specialize in weaving visual narratives through graphic design while building robust, native experiences as an Android Developer.
+              I am <span className="text-white font-medium">Rameesa Rashid</span>, a hybrid creator based in the digital realm. I specialize in weaving visual narratives through graphic design while building robust, native experiences as an Web Developer.
             </p>
             <p>
               My philosophy is simple: <span className="italic">Design shouldn't just look good; it should perform.</span> Whether I'm crafting a brand's editorial layout or architecting a mobile app in Kotlin, I focus on the intersection of human emotion and technical precision.
